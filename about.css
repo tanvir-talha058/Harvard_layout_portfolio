@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  line-height: 1.6;
+  padding: 0;
+}
+
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Top Bar */
+.topbar {
+  background: #161b22;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #30363d;
+}
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+.nav-links a {
+  margin-left: 20px;
+  color: #c9d1d9;
+}
+
+/* Main Profile */
+.profile-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 50px auto 30px;
+  padding: 0 20px;
+}
+.avatar {
+  flex: 1;
+}
+.avatar img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid #30363d;
+}
+.info {
+  flex: 3;
+  padding-left: 30px;
+}
+.info h1 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+.bio {
+  margin: 10px 0;
+  color: #8b949e;
+}
+.links {
+  list-style: none;
+  margin-top: 20px;
+}
+.links li {
+  margin-bottom: 6px;
+}
+
+/* Projects Section */
+.projects {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.projects h2 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+.projects ul {
+  list-style: none;
+}
+.projects ul li {
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  background: #161b22;
+  padding: 20px;
+  text-align: center;
+  color: #8b949e;
+  border-top: 1px solid #30363d;
+}
