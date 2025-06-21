@@ -1,89 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanvir Ahmed</title>
-    <link rel="stylesheet" href="portfolio.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tanvir Ahmed</title>
+  <link rel="stylesheet" href="portfolio.css" />
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <a href="home.html" class="logo-link">
-                    <img class="profile_circle" src="https://media.licdn.com/dms/image/v2/D5603AQHZB3kTwCgb3g/profile-displayphoto-shrink_200_200/B56ZcNAotmGoAY-/0/1748269961349?e=2147483647&v=beta&t=avNZId3dkF8qWY3EUh7JzlIX_38KQKkQ3vkkLy5XRmU">
-                    <span class="name">Tanvir Ahmed</span>
-                </a>
-            </div>
-            <nav class="header-nav">
-                <ul class="nav-menu">
-                    <li><a href="home.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About Me</a></li>
-                    <li><a href="portfolio.html" class="nav-link active">My Portfolio</a></li>
-                </ul>
-            </nav>
-            <div class="header-right">
-                <button class="search-btn" aria-label="Search">
-                    <span class="icon">🔍</span>
-                    <span class="btn-text">Search</span>
-                </button>
-                <button class="menu-btn" aria-label="Menu">
-                    <span class="icon">☰</span>
-                    <span class="btn-text">Menu</span>
-                </button>
-            </div>
-        </div>
-    </header>
 
-    <!-- Portfolio Hero Section -->
-    <section class="portfolio-hero">
-        <div class="container">
-            <h1>My Projects</h1>
-            <p>A showcase of my recent work and projects from Web Engineering Course</p>
-        </div>
-    </section>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo-area">
+        <a href="home.html" class="logo-link">
+          <img class="profile-img" src="https://media.licdn.com/dms/image/v2/D5603AQHZB3kTwCgb3g/profile-displayphoto-shrink_200_200/B56ZcNAotmGoAY-/0/1748269961349?e=2147483647&v=beta&t=avNZId3dkF8qWY3EUh7JzlIX_38KQKkQ3vkkLy5XRmU" alt="Tanvir Ahmed">
+          <span class="name">Tanvir Ahmed</span>
+        </a>
+      </div>
 
-    <!-- Projects Grid Section -->
-    <section class="projects">
-        <div class="container">
-            <div class="projects-grid">
-                <!-- Bio Data Form Card -->
-                <div class="project-card compact">
-                    <a href="biodata design in form style.html" class="project-link-wrapper">
-                        <div class="project-image">
-                            <img src="biodata.jpg" alt="Bio Data Form">
-                        </div>
-                        <div class="project-content">
-                            <h3>Bio Data Form</h3>
-                            <p>Personal information form with modern design</p>
-                            <div class="project-tags">
-                                <span>HTML5</span>
-                                <span>CSS3</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- Calculator Card -->
-                <div class="project-card compact">
-                    <a href="calculator.html" class="project-link-wrapper">
-                        <div class="project-image">
-                            <img src="calculator.jpg" alt="Calculator">
-                        </div>
-                        <div class="project-content">
-                            <h3>Interactive Calculator</h3>
-                            <p>A functional calculator with modern UI and operations</p>
-                            <div class="project-tags">
-                                <span>HTML5</span>
-                                <span>CSS3</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+      <nav class="nav-bar">
+        <ul class="nav-list">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a class="active" href="portfolio.html">My Portfolio</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Search">🔍</button>
+        <button class="icon-btn" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>My Projects</h1>
+      <p>A showcase of my recent work and projects from Web Engineering Course</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects">
+    <div class="container">
+      <div class="project-grid">
+
+        <!-- Bio Data Project -->
+        <div class="project-card">
+          <a href="biodata design in form style.html">
+            <img src="biodata.jpg" alt="Bio Data Form" class="project-img">
+            <div class="project-info">
+              <h3>Bio Data Form</h3>
+              <p>Personal information form with modern design</p>
+              <div class="tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+              </div>
             </div>
+          </a>
         </div>
-    </section>
+
+        <!-- Calculator Project -->
+        <div class="project-card">
+          <a href="calculator.html">
+            <img src="calculator.jpg" alt="Calculator" class="project-img">
+            <div class="project-info">
+              <h3>Interactive Calculator</h3>
+              <p>A functional calculator with modern UI and operations</p>
+              <div class="tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>

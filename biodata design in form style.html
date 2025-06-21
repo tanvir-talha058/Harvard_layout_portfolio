@@ -2,23 +2,62 @@
 <html>
 <head>
   <title>Biodata Form</title>
-  <link rel="stylesheet" href="biodata_styles.css">
+  <style>
+    input, select, textarea {
+      padding-right: 30px;
+      box-sizing: border-box;
+    }
+
+    input.valid, select.valid, textarea.valid {
+      border: 2px solid #28a745;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%2328a745" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M6 10.793l-3.146-3.147-.708.708L6 12.207l7-7-.707-.707z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 16px 16px;
+    }
+
+    input.invalid, select.invalid, textarea.invalid {
+      border: 2px solid #dc3545;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23dc3545" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M8 6.586l-3.293-3.293-1.414 1.414L6.586 8l-3.293 3.293 1.414 1.414L8 9.414l3.293 3.293 1.414-1.414L9.414 8l3.293-3.293-1.414-1.414z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 16px 16px;
+    }
+
+    .error {
+      color: #dc3545;
+      font-size: 0.85em;
+      margin-left: 8px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="biodata_styles.css" />
 </head>
 <body>
   <h2>Biodata Form</h2>
-  <form action="#" method="post">
+  <form action="#" method="post" onsubmit="return validateForm()" onreset="resetErrors()">
     <table cellpadding="10">
       <tr>
         <td>Full Name:</td>
-        <td><input type="text" name="fullname" required></td>
+        <td>
+          <input type="text" name="fullname" id="name" required>
+          <span id="name-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Father's Name:</td>
-        <td><input type="text" name="fathername" required></td>
+        <td>
+          <input type="text" name="fathername" required>
+          <span id="fathername-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Mother's Name:</td>
-        <td><input type="text" name="mothername" required></td>
+        <td>
+          <input type="text" name="mothername" required>
+          <span id="mothername-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Date of Birth:</td>
@@ -68,7 +107,10 @@
       </tr>
       <tr>
         <td>National ID:</td>
-        <td><input type="text" name="nid" pattern="[0-9]{10,17}" title="Please enter valid NID number" required></td>
+        <td>
+          <input type="text" name="nid" id="nid" pattern="[0-9]{10,17}" title="Please enter valid NID number" required>
+          <span id="nid-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Blood Group:</td>
@@ -102,7 +144,10 @@
       </tr>
       <tr>
         <td>Institution:</td>
-        <td><input type="text" name="institution" required></td>
+        <td>
+          <input type="text" name="institution" required>
+          <span id="institution-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Occupation:</td>
@@ -110,15 +155,24 @@
       </tr>
       <tr>
         <td>Address:</td>
-        <td><textarea name="address" rows="3" cols="30" required></textarea></td>
+        <td>
+          <textarea name="address" id="address" rows="3" cols="30" required></textarea>
+          <span id="address-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Phone:</td>
-        <td><input type="tel" name="phone" required></td>
+        <td>
+          <input type="tel" name="phone" id="phone" required>
+          <span id="phone-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Email:</td>
-        <td><input type="email" name="email" required></td>
+        <td>
+          <input type="email" name="email" id="email" required>
+          <span id="email-error" class="error"></span>
+        </td>
       </tr>
       <tr>
         <td>Education:</td>
@@ -132,5 +186,205 @@
       </tr>
     </table>
   </form>
+
+  <script>
+    function validateName() {
+      const name = document.getElementById("name");
+      const name_err = document.getElementById("name-error");
+      let valid = true;
+      if (name.value.trim() === "" || /\d/.test(name.value.trim())) {
+        name_err.textContent = "Please enter your name properly (no digits).";
+        name.classList.add("invalid");
+        name.classList.remove("valid");
+        valid = false;
+      } else {
+        name_err.textContent = "";
+        name.classList.add("valid");
+        name.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateFatherName() {
+      const father = document.querySelector('input[name="fathername"]');
+      const father_err = document.getElementById("fathername-error");
+      let valid = true;
+      if (father.value.trim() === "" || /\d/.test(father.value.trim())) {
+        father_err.textContent = "Please enter father's name properly (no digits).";
+        father.classList.add("invalid");
+        father.classList.remove("valid");
+        valid = false;
+      } else {
+        father_err.textContent = "";
+        father.classList.add("valid");
+        father.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateMotherName() {
+      const mother = document.querySelector('input[name="mothername"]');
+      const mother_err = document.getElementById("mothername-error");
+      let valid = true;
+      if (mother.value.trim() === "" || /\d/.test(mother.value.trim())) {
+        mother_err.textContent = "Please enter mother's name properly (no digits).";
+        mother.classList.add("invalid");
+        mother.classList.remove("valid");
+        valid = false;
+      } else {
+        mother_err.textContent = "";
+        mother.classList.add("valid");
+        mother.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateInstitution() {
+      const inst = document.querySelector('input[name="institution"]');
+      const inst_err = document.getElementById("institution-error");
+      let valid = true;
+      if (inst.value.trim() === "" || /\d/.test(inst.value.trim())) {
+        inst_err.textContent = "Please enter institution name properly (no digits).";
+        inst.classList.add("invalid");
+        inst.classList.remove("valid");
+        valid = false;
+      } else {
+        inst_err.textContent = "";
+        inst.classList.add("valid");
+        inst.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateAddress() {
+      const address = document.getElementById("address");
+      const address_err = document.getElementById("address-error");
+      let valid = true;
+      if (address.value.trim() === "") {
+        address_err.textContent = "Please enter your address.";
+        address.classList.add("invalid");
+        address.classList.remove("valid");
+        valid = false;
+      } else {
+        address_err.textContent = "";
+        address.classList.add("valid");
+        address.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateEmail() {
+      const email = document.getElementById("email");
+      const email_err = document.getElementById("email-error");
+      let valid = true;
+      if (
+        email.value.trim() === "" ||
+        !email.value.includes("@") ||
+        !email.value.includes(".")
+      ) {
+        email_err.textContent = "Please enter a valid email address.";
+        email.classList.add("invalid");
+        email.classList.remove("valid");
+        valid = false;
+      } else {
+        email_err.textContent = "";
+        email.classList.add("valid");
+        email.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateNID() {
+      const nid = document.getElementById("nid");
+      const nid_err = document.getElementById("nid-error");
+      let valid = true;
+      if (
+        nid.value.trim() === "" ||
+        nid.value.length < 10 ||
+        nid.value.length > 17 ||
+        !/^\d+$/.test(nid.value)
+      ) {
+        nid_err.textContent = "Please enter a valid NID number (10-17 digits).";
+        nid.classList.add("invalid");
+        nid.classList.remove("valid");
+        valid = false;
+      } else {
+        nid_err.textContent = "";
+        nid.classList.add("valid");
+        nid.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validatePhone() {
+      const phone = document.getElementById("phone");
+      const phone_err = document.getElementById("phone-error");
+      let valid = true;
+      if (
+        phone.value.trim() === "" ||
+        phone.value.length !== 11 ||
+        !/^\d+$/.test(phone.value)
+      ) {
+        phone_err.textContent = "Please enter an 11 digit phone number.";
+        phone.classList.add("invalid");
+        phone.classList.remove("valid");
+        valid = false;
+      } else {
+        phone_err.textContent = "";
+        phone.classList.add("valid");
+        phone.classList.remove("invalid");
+      }
+      return valid;
+    }
+
+    function validateForm() {
+      let validName = validateName();
+      let validFather = validateFatherName();
+      let validMother = validateMotherName();
+      let validInstitution = validateInstitution();
+      let validAddress = validateAddress();
+      let validEmail = validateEmail();
+      let validNID = validateNID();
+      let validPhone = validatePhone();
+
+      let isValid = validName && validFather && validMother && validInstitution &&
+                    validAddress && validEmail && validNID && validPhone;
+
+      if (isValid) {
+        alert("Form submitted successfully!");
+      }
+
+      return isValid;
+    }
+
+    function resetErrors() {
+      const inputs = ["name", "address", "nid", "phone", "email"];
+      inputs.forEach(id => {
+        const input = document.getElementById(id);
+        const errSpan = document.getElementById(id + "-error");
+        if (input) input.classList.remove("valid", "invalid");
+        if (errSpan) errSpan.textContent = "";
+      });
+
+      ['fathername', 'mothername', 'institution'].forEach(name => {
+        const input = document.querySelector(`input[name="${name}"]`);
+        const errSpan = document.getElementById(name + "-error");
+        if (input) input.classList.remove("valid", "invalid");
+        if (errSpan) errSpan.textContent = "";
+      });
+    }
+
+    window.onload = function () {
+      document.getElementById("name").addEventListener("input", validateName);
+      document.getElementById("address").addEventListener("input", validateAddress);
+      document.getElementById("email").addEventListener("input", validateEmail);
+      document.getElementById("nid").addEventListener("input", validateNID);
+      document.getElementById("phone").addEventListener("input", validatePhone);
+
+      document.querySelector('input[name="fathername"]').addEventListener("input", validateFatherName);
+      document.querySelector('input[name="mothername"]').addEventListener("input", validateMotherName);
+      document.querySelector('input[name="institution"]').addEventListener("input", validateInstitution);
+    };
+  </script>
 </body>
 </html>
